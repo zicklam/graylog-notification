@@ -1,0 +1,33 @@
+--- [Event Definition] ---------------------------
+Title:       ${event_definition_title}
+Description: ${event_definition_description}
+Type:        ${event_definition_type}
+--- [Event] --------------------------------------
+Timestamp:            ${event.timestamp}
+Message:              ${event.message}
+Source:               ${event.source}
+Key:                  ${event.key}
+Priority:             ${event.priority}
+Alert:                ${event.alert}
+Timestamp Processing: ${event.timestamp}
+Timerange Start:      ${event.timerange_start}
+Timerange End:        ${event.timerange_end}
+${if stream}
+--- [Stream] -------------------------------------
+Stream ID:            ${stream.id}
+Stream title:         ${stream.title}
+Stream description:   ${stream.description}
+${if stream_url}Stream URL:           ${stream_url}${end}
+${end}
+${if event.fields}
+--- [Fields] -------------------------------------
+Fields:
+${foreach event.fields field} * ${field.key}: ${field.value}
+${end}${end}
+${if backlog}
+--- [Backlog] ------------------------------------
+Last messages accounting for this alert:
+${foreach backlog message}
+* ${message}
+${end}
+${end}
