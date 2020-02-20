@@ -1,3 +1,7 @@
+Subject:
+Graylog alert${if stream}for stream: ${stream.title}${end}: ${event.message}
+
+Body:
 --- [Event Definition] ---------------------------
 Title:       ${event_definition_title}
 Description: ${event_definition_description}
